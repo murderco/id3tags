@@ -1,11 +1,5 @@
 from mutagen.id3 import ID3
-from glob import glob
-from tests.helpers import out
-
-TEST_FILES = glob("tests/*.mp3")
-GOOD_MP3 = TEST_FILES[-1]
-BAD_MP3 = TEST_FILES[0]
-
+from tests.helpers import BAD_MP3, GOOD_MP3, TEST_FILES
 
 def test_can_load_id3():
     ID3()
