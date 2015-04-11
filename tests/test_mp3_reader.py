@@ -1,6 +1,6 @@
 from nose.tools import raises
 from mp3.reader import MP3Reader
-from tests.helpers import GOOD_MP3, BAD_MP3, out
+from tests.helpers import GOOD_MP3, BAD_MP3
 
 def test_mp3_reader_load():
     MP3Reader(GOOD_MP3)
@@ -38,3 +38,4 @@ def test_mp3_reader_has_tags():
 def test_mp3_reader_has_no_tags():
     b = MP3Reader(BAD_MP3)
     assert(b.has_tags == False)
+
