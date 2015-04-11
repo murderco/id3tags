@@ -30,3 +30,11 @@ def test_mp3_reader_load_info_length():
     # this is how we would calculate the length of the song
     g = MP3Reader(GOOD_MP3)
     assert(round(g.info.length/60, 1) == 3.8)
+
+def test_mp3_reader_has_tags():
+    g = MP3Reader(GOOD_MP3)
+    assert(g.has_tags)
+
+def test_mp3_reader_has_no_tags():
+    b = MP3Reader(BAD_MP3)
+    assert(b.has_tags == False)

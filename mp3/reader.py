@@ -24,3 +24,7 @@ class MP3Reader(object):
         :return: return the id3 tags
         """
         return self._mp3.tags
+
+    @property
+    def has_tags(self):
+        return len(self.tags) > 0
