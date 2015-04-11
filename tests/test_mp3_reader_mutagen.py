@@ -17,3 +17,4 @@ def test_read_good_mp3_length_9():
 def test_read_bad_mp3_length_0():
     b = ID3(BAD_MP3)
     assert(len(b) == 0)
+
