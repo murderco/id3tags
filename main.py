@@ -1,3 +1,6 @@
+#!/usr/bin/env python
+""" Here is the description of the tool
+"""
 from playlist_mods import *
 from mutagen.id3 import *
 from time import *
@@ -16,6 +19,7 @@ def SongPath(artist):
 
 #items = ["TALB", "USLT", "TBPM", "TCMP", "TCOM", "TCOP", "TENC", "TEXT", "TLEN", "TMED", "TMOO", "TIT2", "TIT3", "TPE1", "TPE2", "TPE3", "TPE4", "TPOS", "TPUB", "TRCK", "TOLY", "TSO2", "TSOA", "TSOC", "TSOP", "TSOT", "TSRC", "TSST", "TLAN"]
 
+<<<<<<< HEAD
 #items = ["TALB", "USLT", "TIT2", "TPE1", "TRCK"]
 
 items = ["TPE1", "TALB", "TIT2", "TRCK", "USLT"]
@@ -48,3 +52,19 @@ def info():
     fname.write("{}\n".format(len(broken)))
 
 info()
+=======
+def clean_id3s():
+    for song in songList:
+        audio = ID3(song.split("\n")[0])
+        for item in items:
+            if audio.getall(item) != [] or item == "TLEN":
+                print(audio.getall(item))
+        audio.save
+
+        print("\nNext Song\n")
+
+
+
+if __name__ == "__main__":
+    clean_id3s()
+>>>>>>> 552f724c01429fb0be74b7d6b5c7040130398ff2
