@@ -1,5 +1,5 @@
 from playlist_mods import *
-from mutagen import ID3
+from mutagen.id3 import ID3
 
 items = ["TALB", "TBPM", "TCMP", "TCOM", "TCOP", "TENC", "TEXT", "TLEN", "TMED", "TMOO", "TIT2", "TIT3", "TPE1", "TPE2", "TPE3", "TPE4", "TPOS", "TPUB", "TRCK", "TOLY", "TSO2", "TSOA", "TSOC", "TSOP", "TSOT", "TSRC", "TSST", "TLAN"]
 
