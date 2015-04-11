@@ -3,6 +3,8 @@
 """
 from mutagen.id3 import *
 import os
+import logging
+from logging.config import fileConfig
 
 def SongPath(artist):
     outputList= []
@@ -35,3 +37,21 @@ def info():
 
     fname.write("{}\n".format(broken))
     fname.write("{}\n".format(len(broken)))
+
+
+if __name__ == "__main__":
+    # create the log file here
+    logfile = os.path.join("logs", "id3reader.log")
+
+    # make sure we have the directory made, before starting the logger
+    if not os.path.isdir(os.path.dirname(logfile)):
+        os.makedirs(os.path.dirname(logfile))
+
+    # set the log level
+    loglevel_name = "INFO"
+
+    # config the logger
+    fileConfig("logging.conf", defaults={"logfile": logfile, "loglevel": loglevel_name})
+
+    # start the program here
+    logging.info("Starting id3 reader/writer")
