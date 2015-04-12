@@ -1,20 +1,34 @@
 __author__ = 'Xavier'
 
-from mutagen.id3 import *
-
-class Track(object):
-
-    def __init__(self,object):
-        self.artist_name = object.getall("TPE1")
-        self.album_name = object.getall("TALB")
-        self.track_name = object.getall("TIT2")
-        self.track_number = object.getall("TRCK")
-        self.lyrics = object.getall("USLT")
+# create a global tags, these are TAG NAMES and their corresponding pretty names
+TAGS = {
+    "TPE1": "artist_name",
+    "TALB": "album_name",
+    "TIT2": "track_name",
+    "TRCK": "track_number",
+    "USLT": "lyrics",
+    }
 
 
+class Tags(object):
 
 
-Killer = Track(ID3("/Users/Xavier/Music/Library/10 Years/Minus the Machine/01 - Minus The Machine.mp3"))
-print(Killer.artist_name[0])
-print(Killer.album_name[0])
-print(Killer.track_name[0])
+    def __init__(self, mp3, tags=TAGS):
+
+        self._tags = tags
+        self.mp3 = mp3
+
+        # this makes sure that we have an object with tags attributes,
+        # if not we want to raise an exception
+        if not hasattr(mp3, "tags"):
+            raise AttributeError("Unexpected object type {}".format(type(mp3)))
+
+
+    def set_properties(self):
+
+        for tag_name, new_tag_name in self._tags.items():
+            tag_val = None
+            if tag_name in self.mp3.tags:
+                tag_val = self.mp3.tags[tag_name]
+            setattr(self, new_tag_name, tag_val)
+
