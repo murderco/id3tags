@@ -32,3 +32,9 @@ class Tags(object):
                 tag_val = self.mp3.tags[tag_name]
             setattr(self, new_tag_name, tag_val)
 
+    @classmethod
+    def run(cls, mp3, tags=TAGS):
+        tag = cls(mp3, tags)
+        tag.set_properties()
+        return tag
+
